@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zabbix Monitoring Report Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Zabbix Monitoring Report Generator</h1>
+    
+    <div class="form-group">
+      <label for="csvFile1">Unggah CSV File 1:</label>
+      <input type="file" id="csvFile1" accept=".csv">
+    </div>
+    
+    <div class="form-group">
+      <label for="csvFile2">Unggah CSV File 2 (Opsional):</label>
+      <input type="file" id="csvFile2" accept=".csv">
+    </div>
+    
+    <div class="form-group">
+      <label for="shift">Pilih Shift:</label>
+      <select id="shift">
+        <option value="A">Shift A (06:00-15:00)</option>
+        <option value="C">Shift C (14:00-23:00)</option>
+        <option value="M">Shift M (22:00-07:00)</option>
+        <option value="D">Daily (00:00-23:59)</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="operatorName">Nama Operator:</label>
+      <select id="operatorName">
+        <option value="Anissa">Anissa</option>
+        <option value="Armin">Armin</option>
+        <option value="Agung">Agung</option>
+        <option value="Alif">Alif</option>
+        <option value="Aaqil">Aaqil</option>
+        <option value="Harry">Harry</option>
+        <option value="Tegar">Tegar</option>
+        <option value="Udin">Udin</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="date">Tanggal:</label>
+      <input type="date" id="date">
+    </div>
+    
+    <div class="form-group">
+      <label for="emailTo">Email Tujuan:</label>
+      <input type="email" id="emailTo" placeholder="Masukkan email tujuan" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="emailCC">CC (pisahkan dengan koma):</label>
+      <input type="text" id="emailCC" placeholder="contoh@email.com, lain@email.com">
+    </div>
+    
+    <div class="button-group">
+      <button onclick="analyzeCSV()">Generate Report</button>
+      <button onclick="exportToPDF()">Export PDF</button>
+      <button onclick="exportToPDFAndSend()">Export PDF & Kirim Email</button>
+      <button onclick="copyReport()">Copy Report</button>
+    </div>
+    
+    <div class="report-group">
+      <label for="report">Laporan:</label>
+      <textarea id="report" rows="20" cols="80" placeholder="Laporan akan muncul di sini" readonly></textarea>
+    </div>
+  </div>
+  
+  <script src="/script.js"></script>
+</body>
+</html>
